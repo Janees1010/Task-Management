@@ -67,4 +67,4 @@ npm install
 
 Start the frontend development server:
 
-npm start
+npm run dev
