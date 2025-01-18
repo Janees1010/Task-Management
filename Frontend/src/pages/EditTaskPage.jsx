@@ -11,6 +11,7 @@ const EditTaskPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [task, setTask] = useState();
+  const [loading,setLoading] = useState(true)
 
   const fetchData = async () => {
     try {
@@ -19,20 +20,23 @@ const EditTaskPage = () => {
         headers: { authorization: `Bearer ${user?.token}` },
       });
       setTask(data);
+      setLoading(false)
     } catch (error) {
       console.log(error.message);
+      setLoading(false)
+
     }
   };
 
-  const getFormattedDate = (date) => {
+  const formatDateForInput = (date) => {
     const d = new Date(date);
-    const day = String(d.getDate()).padStart(2, '0');
-    const month = String(d.getMonth() + 1).padStart(2, '0');
     const year = d.getFullYear();
-    const formattedDate = `${year}-${month}-${day}`;
-    console.log(formattedDate);
-    return formattedDate;
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    console.log(`${year}-${month}-${day}`);
+    return `${year}-${month}-${day}`;
   };
+  
   
   
 
@@ -41,7 +45,7 @@ const EditTaskPage = () => {
       title: "",
       description: "",
       priority: "easy",
-      dueDate: task? getFormattedDate(task?.dueDate) : "",
+      dueDate: task ? formatDateForInput(task?.dueDate) : "",
       category: "",
       status: "pending",
     },
@@ -70,7 +74,9 @@ const EditTaskPage = () => {
       fetchData();
     }
   }, [user]);
-
+  if(loading){
+     return <div>Loading.....</div>
+  }
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -167,7 +173,7 @@ const EditTaskPage = () => {
                 <input
                   id="dueDate"
                   name="dueDate"
-                  value={task?.dueDate}
+                  defaultValue={formatDateForInput(task?.dueDate)}
                   type="date"
                   onChange={handleChange}
                   required

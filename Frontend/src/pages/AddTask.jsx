@@ -3,9 +3,8 @@ import { useFormik } from "formik";
 import { addOneTask } from "../redux/slices/taskSlice";
 import { useDispatch, useSelector } from "react-redux";
 import axiosInstace from "../axios/axios";
-import { useEffect } from "react";
 
-const Signin = () => {
+const AddTask = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -31,11 +30,7 @@ const Signin = () => {
       }
     },
   });
-  //   useEffect(()=>{
-  //     if(!user.token){
-  //         navigate("/signin")
-  //     }
-  //   })
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -184,4 +179,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default AddTask;
