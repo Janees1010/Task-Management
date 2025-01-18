@@ -27,12 +27,14 @@ export default function Navbar() {
     console.log(data);
     navigate("/");
   };
-
+  let timeoutId;
   const handleSearch = async (e) => {
-    console.log(e.target.value);
     try {
+        if(timeoutId){
+            clearTimeout(timeoutId)
+        }
       const query = e.target.value;
-      const id = setTimeout(async () => {
+       timeoutId = setTimeout(async () => {
         if (query.length) {
           const { data } = await axiosInstace("/task/search", {
             params: { query },
@@ -43,7 +45,6 @@ export default function Navbar() {
         } else {
           fetchTasks();
         }
-        clearTimeout(id);
       }, 700);
     } catch (error) {
       console.log(error.message);
@@ -76,12 +77,11 @@ export default function Navbar() {
 
         <div className="relative">
           <button
-            className="w-10 h-10 rounded-full bg-slate-500"
+            className="w-10 text-white text-xl  h-10 rounded-full bg-slate-500"
             onClick={() => setShowDropDown((pre) => !pre)}
-          ></button>
+          >{user.username ? user.username.slice(0,1) : ""}</button>
           {showUserDropdown ? (
             <div
-              transition
               className="absolute right-0  mt-3 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
             >
               <div>
