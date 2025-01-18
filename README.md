@@ -1,33 +1,70 @@
-# Task Management System
+Task Management System
 
-A simple Task Management System built using the MERN stack (MongoDB, Express.js, React.js, Node.js). This system includes basic user authentication and CRUD operations for managing tasks.
+A simple Task Management System built using the MERN stack (MongoDB, Express.js, React.js, Node.js). This system includes basic user authentication, task management (CRUD), and a responsive dashboard.
+Features
+Backend (Node.js & Express)
 
-## Features
+    JWT-based Authentication: Secure user login and registration.
+    Password Encryption: Uses bcrypt for hashing user passwords.
+    Task Management: CRUD operations for tasks.
+    Task Features: Priority, Due date, Status tracking (Pending, In Progress, Completed).
+    Error Handling & Validation: Basic error handling on all API endpoints.
 
-### Backend (Node.js & Express)
-- JWT-based authentication for secure user login and registration.
-- Password encryption using bcrypt.
-- CRUD operations for tasks, including creating, reading, updating, and deleting tasks.
-- Basic error handling for API endpoints.
+Frontend (React)
 
-### Frontend (React)
-- User registration and login forms.
-- Basic task list dashboard to display all tasks.
+    User Registration & Login: Basic forms for user authentication.
+    Task Dashboard: Display all tasks with filters by priority, category, and due date.
+    Responsive Design: The interface adapts for both mobile and desktop views.
 
-## Technologies Used
-- **MongoDB**: For storing user and task data.
-- **Express.js**: For creating RESTful APIs.
-- **React.js**: For building the user interface.
-- **Node.js**: For server-side logic.
-- **JWT**: For user authentication.
-- **bcrypt**: For password hashing.
-- **Axios**: For making HTTP requests from the frontend to the backend.
+Technologies Used
 
-## Installation
+    MongoDB: For storing user and task data.
+    Express.js: For creating RESTful APIs.
+    React.js: For building the user interface.
+    Node.js: For server-side logic.
+    JWT: For user authentication.
+    bcrypt: For password hashing.
+    Axios: For making HTTP requests from the frontend to the backend.
 
-### Backend
-1. Clone the repository.
-2. Navigate to the backend directory.
-3. Install dependencies:
-   ```bash
-   npm install
+Installation
+Backend Setup
+
+    Clone the repository:
+
+git clone <repository-url>
+
+Navigate to the backend directory:
+
+cd backend
+
+Install dependencies:
+
+npm install
+
+Create a .env file in the backend directory and add the following environment variables:
+
+SECRET_KEY=your-secret-key
+DB_URL=your-mongo-db-connection-string
+
+    SECRET_KEY: Used for signing JWT tokens (choose your secret key).
+    DB_URL: The URL of your MongoDB database (e.g., mongodb://localhost:27017/taskmanagement).
+
+Start the backend server:
+
+    npm start
+
+    The backend should now be running at http://localhost:5000.
+
+Frontend Setup
+
+    Navigate to the frontend directory:
+
+cd frontend
+
+Install dependencies:
+
+npm install
+
+Start the frontend development server:
+
+npm start
