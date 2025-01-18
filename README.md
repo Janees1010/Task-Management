@@ -53,7 +53,7 @@ Start the backend server:
 
     npm start
 
-    The backend should now be running at http://localhost:5000.
+    The backend should now be running 
 
 Frontend Setup
 
